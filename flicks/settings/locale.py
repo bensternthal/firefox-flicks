@@ -28,6 +28,7 @@ LINK_BRIEF = {
     'it': 'http://static.mozilla.com/firefoxflicks/pdf/Filmmakers_Creative_Brief_it.pdf',
     'lij': 'http://static.mozilla.com/firefoxflicks/pdf/Filmmakers_Creative_Brief_lij.pdf',
     'ja': 'http://static.mozilla.com/firefoxflicks/pdf/Filmmakers_Creative_Brief_ja.pdf',
+    'sq': 'http://static.mozilla.com/firefoxflicks/pdf/Filmmakers_Creative_Brief_sq.pdf',
 }
 
 LINK_CCLICENSE = {
