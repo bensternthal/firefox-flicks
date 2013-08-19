@@ -1,0 +1,83 @@
+{% macro cta() -%}
+
+  {% set ctaLinkClass_1 = 'go' %}
+  {% set ctaLinkClass_2 = 'go' %}
+  {% set ctaLinkClass_3 = 'go' %}
+
+  {% if waffle.flag('video-submit') %}
+    {% set ctaClass_3 = 'submit-link' %}
+
+    {% set ctaHead_1 = _('Meet your competition') %}
+    {% set ctaHead_2 = _('Start thinking about your flick') %}
+    {% set ctaHead_3 = _('Submit your flick today') %}
+
+    {% set ctaURL_1 = url('flicks.videos.list') %}
+    {% set ctaURL_2 = settings.LINK_BRIEF[request.locale] %}
+    {% set ctaURL_3 = url('flicks.videos.upload') %}
+
+    {% set ctaLink_1 = _('View the gallery of entries') %}
+    {% set ctaLink_2 = _('Read the creative brief') %}
+    {% set ctaLink_3 = _('Start here') %}
+
+    {% set ctaLinkClass_2 = 'go ga_brief-dl' %}
+    {% set ctaLinkClass_3 = 'requires-auth' %}
+
+  {% elif waffle.flag('voting') %}
+    {% set ctaHead_1 = _('See Early Entry Award winners') %}
+    {% set ctaHead_2 = _('Vote for the People\'s Choice Award') %}
+    {% set ctaHead_3 = _('Explore 2013 Flicks') %}
+
+    {% set ctaURL_1 = url('flicks.videos.winners') %}
+    {% set ctaURL_2 = url('flicks.videos.list') %}
+    {% set ctaURL_3 = url('flicks.videos.list') %}
+
+    {% set ctaLink_1 = _('View the winning flicks so far') %}
+    {% set ctaLink_2 = _('Choose your favorites here') %}
+    {% set ctaLink_3 = _('View the gallery of entries') %}
+
+  {% elif waffle.flag('voting-end') %}
+    {% set ctaHead_1 = _('Explore 2013 Flicks') %}
+    {% set ctaHead_2 = _('See Early Entry Award winners') %}
+    {% set ctaHead_3 = _('Meet our partners') %}
+
+    {% set ctaURL_1 = url('flicks.videos.list') %}
+    {% set ctaURL_2 = url('flicks.videos.winners') %}
+    {% set ctaURL_3 = url('flicks.base.partners') %}
+
+    {% set ctaLink_1 = _('View the gallery of entries') %}
+    {% set ctaLink_2 = _('View the winning flicks so far') %}
+    {% set ctaLink_3 = _('Get to know our friends who made Flicks 2013 possible') %}
+
+  {% elif waffle.flag('winners-announce') %}
+    {% set ctaHead_1 = _('Explore 2013 Flicks') %}
+    {% set ctaHead_2 = _('See Firefox Flicks 2013 winners') %}
+    {% set ctaHead_3 = _('Meet our partners') %}
+
+    {% set ctaURL_1 = url('flicks.videos.list')  %}
+    {% set ctaURL_2 = url('flicks.videos.winners') %}
+    {% set ctaURL_3 = url('flicks.base.partners')  %}
+
+    {% set ctaLink_1 = _('View the gallery of entries') %}
+    {% set ctaLink_2 = _('Watch the winning entries') %}
+    {% set ctaLink_3 = _('Get to know our friends who made Flicks 2013 possible') %}
+
+  {% endif %}
+
+  <div class="actions">
+    <ul>
+      <li class="{{ ctaClass_1 }}">
+        <h3>{{ ctaHead_1 }}</h3>
+        <p><a href="{{ ctaURL_1 }}" class="{{ ctaLinkClass_1 }}">{{ ctaLink_1 }}</a></p>
+      </li>
+      <li class="{{ ctaClass_2 }}">
+        <h3>{{ ctaHead_2 }}</h3>
+        <p><a href="{{ ctaURL_2 }}" class="{{ ctaLinkClass_2 }}">{{ ctaLink_2 }}</a></p>
+      </li>
+      <li class="{{ ctaClass_3 }}">
+        <h3>{{ ctaHead_3 }}</h3>
+        <p><a href="{{ ctaURL_3 }}" class="{{ ctaLinkClass_3 }}">{{ ctaLink_3 }}</a></p>
+      </li>
+    </ul>
+  </div>
+
+{%- endmacro %}
